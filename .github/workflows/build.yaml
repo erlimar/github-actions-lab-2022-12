@@ -1,0 +1,52 @@
+name: CI/CD Build
+
+on:
+  push:
+    branches:
+    - 'main'
+    - 'release/**'
+    tags:
+    # [ok]   v1.0.0
+    # [ok]   v1.2.3-20221212+s4c56d465
+    # [fail] v1.2.3fail
+    # [fail] v1.0
+    # [fail] v1
+    # [fail] 1.0.0
+    # [fail] 1.0
+    # [fail] 1
+    - ^v([0-9]+.[0-9]+.[0-9])(\-.*)*$
+
+jobs:
+  version:
+    runs-on: ubuntu-22.04
+    outputs:
+      var1: $${{ 'variavel 1' }}
+      var2: $${{ 'variavel 2' }}
+      var3: $${{ 'variável 3' }}
+    steps:
+    - name: Define variáveis
+      run: echo 'Definindo variáveis...'
+  
+  build:
+    needs: version
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Step único
+
+  test:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Step único
+
+  pack:
+    needs: test
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Step único
+
+  publish:
+    needs: pack
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Step único
