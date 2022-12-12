@@ -32,21 +32,25 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - name: Step único
+      run: echo 'Step único'
 
   test:
     needs: build
     runs-on: ubuntu-22.04
     steps:
     - name: Step único
+      run: echo 'Step único'
 
   pack:
     needs: test
     runs-on: ubuntu-22.04
     steps:
     - name: Step único
+      run: echo 'Step único'
 
   publish:
     needs: pack
     runs-on: ubuntu-22.04
     steps:
     - name: Step único
+      run: echo 'Step único'
