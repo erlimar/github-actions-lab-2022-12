@@ -61,6 +61,8 @@ jobs:
         echo "var1: ${{ needs.version.outputs.var1 }}"
         echo "var2: ${{ needs.version.outputs.var2 }}"
         echo "var3: ${{ needs.version.outputs.var3 }}"
+        echo "version: ${{ needs.get-version.outputs.version }}"
+        echo "version-without-v: ${{ needs.get-version.outputs.version-without-v }}"
 
   test:
     needs: [version, build]
