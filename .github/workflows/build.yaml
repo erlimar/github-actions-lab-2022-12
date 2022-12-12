@@ -23,9 +23,20 @@ jobs:
       var1: ${{ 'variavel 1' }}
       var2: ${{ 'variavel 2' }}
       var3: ${{ 'variável 3' }}
+      version: ${{ steps.get_version.outputs.version }}
+      version-without-v: ${{ steps.get_version.outputs.version-without-v }}
+      is-semver: ${{ steps.get_version.outputs.is-semver }}
+      major: ${{ steps.get_version.outputs.major }}
+      minor: ${{ steps.get_version.outputs.minor }}
+      patch: ${{ steps.get_version.outputs.patch }}
+      prerelease: ${{ steps.get_version.outputs.prerelease }}
+      build: ${{ steps.get_version.outputs.build }}
     steps:
     - name: Define variáveis
       run: echo 'Definindo variáveis...'
+    - name: Get Version
+      id: get_version
+      uses: battila7/get-version-action@v2
   
   build:
     needs: version
