@@ -39,7 +39,7 @@ jobs:
         echo "var3: ${{ needs.version.outputs.var3 }}"
 
   test:
-    needs: build
+    needs: [version, build]
     runs-on: ubuntu-22.04
     steps:
     - name: Step único
