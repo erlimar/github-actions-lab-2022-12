@@ -50,7 +50,7 @@ jobs:
         echo "var3: ${{ needs.version.outputs.var3 }}"
 
   pack:
-    needs: test
+    needs: [version, test]
     runs-on: ubuntu-22.04
     steps:
     - name: Step único
@@ -61,7 +61,7 @@ jobs:
         echo "var3: ${{ needs.version.outputs.var3 }}"
 
   publish:
-    needs: pack
+    needs: [version, pack]
     runs-on: ubuntu-22.04
     steps:
     - name: Step único
