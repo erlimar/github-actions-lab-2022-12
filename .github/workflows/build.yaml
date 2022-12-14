@@ -17,6 +17,11 @@ on:
     - ^v([0-9]+.[0-9]+.[0-9])(\-.*)*$
 
 jobs:
+  print:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Imprime variáveis de ambiente
+      run: env
   version:
     runs-on: ubuntu-22.04
     outputs:
